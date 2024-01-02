@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:roovies/helpers/constant.dart';
+import 'package:roovies/providers.dart/movies_provider.dart';
 import 'package:roovies/widget/Home_screen.dart';
 
 void main() {
@@ -9,21 +11,24 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Roovies',
-      theme: ThemeData(
-        primarySwatch: Constants.color,
-        textTheme: TextTheme(
-          headline6: TextStyle(
-            color: Colors.amber,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
+    return ChangeNotifierProvider(
+      create: (context) => MoviesProvider(),
+      child: MaterialApp(
+        title: 'Roovies',
+        theme: ThemeData(
+          primarySwatch: Constants.color,
+          textTheme: const TextTheme(
+            titleMedium: TextStyle(
+              color: Colors.amber,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
           ),
+          colorScheme: const ColorScheme.light(),
+          fontFamily: "Poppins",
         ),
-        accentColor: Color.fromRGBO(244, 193, 15, 1),
-        fontFamily: "Poppins",
+        home: HomeScreen(),
       ),
-      home: HomeScreen(),
     );
   }
 }

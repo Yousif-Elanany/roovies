@@ -6,7 +6,7 @@ class TrendingPerson extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(
+      margin: const EdgeInsets.only(
         left: 10,
         top: 20,
       ),
